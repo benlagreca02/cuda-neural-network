@@ -1,6 +1,6 @@
 #pragma once
 
-#include "nn_utils/matrix.hh"
+#include "../../cuda-neural-network/src/nn_utils/matrix.hh"
 #include <vector>
 
 namespace testutils {

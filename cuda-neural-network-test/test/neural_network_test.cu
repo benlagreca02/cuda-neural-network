@@ -1,12 +1,12 @@
 #include <vector>
 #include <iostream>
 
-#include "gtest/gtest.h"
-#include "neural_network.hh"
-#include "layers/linear_layer.hh"
-#include "layers/relu_activation.hh"
-#include "test_utils.hh"
-#include "nn_utils/matrix.hh"
+#include "../googletest-lib/gtest/gtest.h"
+#include "../../cuda-neural-network/src/neural_network.hh"
+#include "../../cuda-neural-network/src/layers/linear_layer.hh"
+#include "../../cuda-neural-network/src/layers/relu_activation.hh"
+#include "../../cuda-neural-network-test/test/test_utils.hh"
+#include "../../cuda-neural-network/src/nn_utils/matrix.hh"
 
 namespace {
 

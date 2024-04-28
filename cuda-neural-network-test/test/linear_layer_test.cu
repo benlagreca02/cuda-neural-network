@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 
-#include "gtest/gtest.h"
+#include "../googletest-lib/gtest/gtest.h"
 #include "test_utils.hh"
-#include "layers/linear_layer.hh"
-#include "nn_utils/matrix.hh"
+#include "../../cuda-neural-network/src/layers/linear_layer.hh"
+#include "../../cuda-neural-network/src/nn_utils/matrix.hh"
 
 namespace {
 

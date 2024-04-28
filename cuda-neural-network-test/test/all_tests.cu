@@ -1,5 +1,5 @@
 #include <time.h>
-#include "gtest/gtest.h"
+#include "../googletest-lib/gtest/gtest.h"
 
 #include "bce_cost_test.cu"
 #include "linear_layer_test.cu"

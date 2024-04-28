@@ -1,7 +1,7 @@
-#include "gtest/gtest.h"
+#include "../../cuda-neural-network-test/googletest-lib/gtest/gtest.h"
 #include "test_utils.hh"
-#include "nn_utils/bce_cost.hh"
-#include "nn_utils/matrix.hh"
+#include "../../cuda-neural-network/src/nn_utils/bce_cost.hh"
+#include "../../cuda-neural-network/src/nn_utils/matrix.hh"
 
 #include <iostream>
 

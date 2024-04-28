@@ -1,7 +1,7 @@
-#include "gtest/gtest.h"
-#include "layers/relu_activation.hh"
-#include "test_utils.hh"
-#include "nn_utils/matrix.hh"
+#include "../googletest-lib/gtest/gtest.h"
+#include "../../cuda-neural-network/src/layers/relu_activation.hh"
+#include "../../cuda-neural-network-test/test/test_utils.hh"
+#include "../../cuda-neural-network/src/nn_utils/matrix.hh"
 
 #include <iostream>
 #include <exception>

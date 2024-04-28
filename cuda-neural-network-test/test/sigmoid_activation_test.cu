@@ -1,8 +1,8 @@
-#include "gtest/gtest.h"
-#include "layers/sigmoid_activation.hh"
-#include "test_utils.hh"
-#include "nn_utils/nn_exception.hh"
-#include "nn_utils/matrix.hh"
+#include "../googletest-lib/gtest/gtest.h"
+#include "../../cuda-neural-network/src/layers/sigmoid_activation.hh"
+#include "../../cuda-neural-network-test/test/test_utils.hh"
+#include "../../cuda-neural-network/src/nn_utils/nn_exception.hh"
+#include "../../cuda-neural-network/src/nn_utils/matrix.hh"
 
 #include <iostream>
 
