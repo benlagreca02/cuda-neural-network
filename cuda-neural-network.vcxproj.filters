@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="nn_utils">
+      <UniqueIdentifier>{dc1eafcc-d47d-4e7a-bfaa-8e76f5b5042c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="layers">
+      <UniqueIdentifier>{21c206b6-f68e-4d40-8785-2638342dd51b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{6497b634-ff10-4236-b6bf-160ec097c823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\googletest-lib">
+      <UniqueIdentifier>{8c4dfa87-7aa3-491c-b83f-07f58c9ec8db}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="cuda-neural-network\src\nn_utils\bce_cost.cu">
+      <Filter>nn_utils</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network\src\nn_utils\matrix.cu">
+      <Filter>nn_utils</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network\src\nn_utils\shape.cu">
+      <Filter>nn_utils</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network\src\layers\linear_layer.cu">
+      <Filter>layers</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network\src\layers\relu_activation.cu">
+      <Filter>layers</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network\src\layers\sigmoid_activation.cu">
+      <Filter>layers</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network-test\test\all_tests.cu">
+      <Filter>test</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network-test\test\bce_cost_test.cu">
+      <Filter>test</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network-test\test\linear_layer_test.cu">
+      <Filter>test</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network-test\test\neural_network_test.cu">
+      <Filter>test</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network-test\test\relu_activation_test.cu">
+      <Filter>test</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network-test\test\sigmoid_activation_test.cu">
+      <Filter>test</Filter>
+    </CudaCompile>
+    <CudaCompile Include="cuda-neural-network-test\test\test_utils.cu">
+      <Filter>test</Filter>
+    </CudaCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cuda-neural-network\src\nn_utils\bce_cost.hh">
+      <Filter>nn_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda-neural-network\src\nn_utils\matrix.hh">
+      <Filter>nn_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda-neural-network\src\nn_utils\nn_exception.hh">
+      <Filter>nn_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda-neural-network\src\nn_utils\shape.hh">
+      <Filter>nn_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda-neural-network\src\layers\linear_layer.hh">
+      <Filter>layers</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda-neural-network\src\layers\nn_layer.hh">
+      <Filter>layers</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda-neural-network\src\layers\relu_activation.hh">
+      <Filter>layers</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda-neural-network\src\layers\sigmoid_activation.hh">
+      <Filter>layers</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda-neural-network-test\test\test_utils.hh">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda-neural-network-test\googletest-lib\gtest\gtest.h">
+      <Filter>test\googletest-lib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cuda-neural-network-test\googletest-lib\gtest\gtest-all.cc">
+      <Filter>test\googletest-lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
