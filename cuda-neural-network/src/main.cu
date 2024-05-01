@@ -16,7 +16,7 @@ float computeAccuracy(const Matrix& predictions, const Matrix& targets);
 
 // Very small for benchmarking purposes
 const int NUM_EPOCHS = 100;
-
+const int PRINT_FREQUENCY = 25;
 int main() {
 
 	srand( time(NULL) );
@@ -38,16 +38,25 @@ int main() {
 	duration<double, std::milli> forwardTotalTimeMs(0);
 	duration<double, std::milli> backwardTotalTimeMs(0);
 	duration<double, std::milli> costCalcTotalTimeMs(0);
-	// network training loop
+	
+
+	// the result of forward prop, i.e. a 'guess'
 	Matrix Y;
+
+	printf("Training for %d epochs and printing every %d\n", NUM_EPOCHS, PRINT_FREQUENCY);
+
+	// network training loop
 	for (int epoch = 0; epoch < NUM_EPOCHS+1; epoch++) {
 		float cost = 0.0;
 		for (int batch = 0; batch < dataset.getNumOfBatches() - 1; batch++) {
+			
 			auto t0 = high_resolution_clock::now();
 			Y = nn.forward(dataset.getBatches().at(batch));
+			
 			auto forwardTime = high_resolution_clock::now();
 			nn.backprop(Y, dataset.getTargets().at(batch));
 			auto backwardTime = high_resolution_clock::now();
+
 			cost += bce_cost.cost(Y, dataset.getTargets().at(batch));
 			auto costCalcTime = high_resolution_clock::now();
 
@@ -78,17 +87,12 @@ int main() {
 			Y, dataset.getTargets().at(dataset.getNumOfBatches() - 1));
 	std::cout 	<< "Accuracy: " << accuracy << std::endl;
 	auto totalTimeMs = forwardTotalTimeMs + backwardTotalTimeMs + costCalcTotalTimeMs;
-	/*std::cout.precision(4);
-	std::cout << std::fixed;
-	std::cout << "Forward prop time: \t" << forwardTotalTimeMs.count() << "\t" <<  (forwardTotalTimeMs.count() /totalTimeMs.count()) * 100  << std::endl;
-	std::cout << "Backward prop time: \t" << backwardTotalTimeMs.count() << "\t" << (backwardTotalTimeMs.count()/totalTimeMs.count()) * 100 <<std::endl;
-	std::cout << "Cost calculation time: \t" << costCalcTotalTimeMs.count() << "\t" << (costCalcTotalTimeMs.count() /totalTimeMs.count()) * 100 << std::endl;
-	std::cout << "Total execution time: \t" << totalTimeMs.count() << std::endl;
-	*/
-	printf("Forward prop time: \t %8.4f \t %4.2f \n", forwardTotalTimeMs.count(), (forwardTotalTimeMs.count() / totalTimeMs.count()) * 100);
-	printf("Backward prop time: \t %8.4f \t %4.2f \n", backwardTotalTimeMs.count(), (backwardTotalTimeMs.count() / totalTimeMs.count()) * 100);
-	printf("cost calculation time: \t %8.4f \t %4.2f \n", costCalcTotalTimeMs.count(), (costCalcTotalTimeMs.count() / totalTimeMs.count()) * 100);
-	
+
+	printf("\n====== TIMINGS (ms) ====== \n");
+	printf("Forward prop time: \t %12.4f \t %5.2f \n", forwardTotalTimeMs.count(), (forwardTotalTimeMs.count() / totalTimeMs.count()) * 100);
+	printf("Backward prop time: \t %12.4f \t %5.2f \n", backwardTotalTimeMs.count(), (backwardTotalTimeMs.count() / totalTimeMs.count()) * 100);
+	printf("Cost Calculation time: \t %12.4f \t %5.2f \n", costCalcTotalTimeMs.count(), (costCalcTotalTimeMs.count() / totalTimeMs.count()) * 100);
+	printf("Total execution time: \t %12.4f\n", totalTimeMs.count());
 	return 0;
 }
 
