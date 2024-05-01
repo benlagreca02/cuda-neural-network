@@ -12,6 +12,8 @@
 
 float computeAccuracy(const Matrix& predictions, const Matrix& targets);
 
+const int NUM_EPOCHS = 100;
+
 int main() {
 
 	srand( time(NULL) );
@@ -27,7 +29,7 @@ int main() {
 
 	// network training
 	Matrix Y;
-	for (int epoch = 0; epoch < 1001; epoch++) {
+	for (int epoch = 0; epoch < NUM_EPOCHS+1; epoch++) {
 		float cost = 0.0;
 
 		for (int batch = 0; batch < dataset.getNumOfBatches() - 1; batch++) {
@@ -36,7 +38,7 @@ int main() {
 			cost += bce_cost.cost(Y, dataset.getTargets().at(batch));
 		}
 
-		if (epoch % 100 == 0) {
+		if (epoch % 25 == 0) {
 			std::cout 	<< "Epoch: " << epoch
 						<< ", Cost: " << cost / dataset.getNumOfBatches()
 						<< std::endl;

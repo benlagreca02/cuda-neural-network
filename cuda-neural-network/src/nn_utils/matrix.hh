@@ -17,7 +17,7 @@ public:
 
 	std::shared_ptr<float> data_device;
 	std::shared_ptr<float> data_host;
-
+	
 	Matrix(size_t x_dim = 1, size_t y_dim = 1);
 	Matrix(Shape shape);
 
