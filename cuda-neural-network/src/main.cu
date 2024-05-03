@@ -25,9 +25,14 @@ int main() {
 	BCECost bce_cost;
 
 	NeuralNetwork nn;
+	// 2 -> 30 -> 256 -> 30 -> 1
 	nn.addLayer(new LinearLayer("linear_1", Shape(2, 30)));
 	nn.addLayer(new ReLUActivation("relu_1"));
-	nn.addLayer(new LinearLayer("linear_2", Shape(30, 1)));
+	nn.addLayer(new LinearLayer("linear_2", Shape(30, 256)));
+	nn.addLayer(new ReLUActivation("relu_2"));
+	nn.addLayer(new LinearLayer("linear_3", Shape(256, 30)));
+	nn.addLayer(new ReLUActivation("relu_3"));
+	nn.addLayer(new LinearLayer("linear_4", Shape(30, 1)));
 	nn.addLayer(new SigmoidActivation("sigmoid_output"));
 	
 	// To keep me from having to type "std::chrono:: " every time I need something
@@ -49,25 +54,22 @@ int main() {
 	for (int epoch = 0; epoch < NUM_EPOCHS+1; epoch++) {
 		float cost = 0.0;
 		for (int batch = 0; batch < dataset.getNumOfBatches() - 1; batch++) {
-			
 			auto t0 = high_resolution_clock::now();
 			Y = nn.forward(dataset.getBatches().at(batch));
-			
-			auto forwardTime = high_resolution_clock::now();
+			auto t1 = high_resolution_clock::now();
 			nn.backprop(Y, dataset.getTargets().at(batch));
-			auto backwardTime = high_resolution_clock::now();
-
+			auto t2 = high_resolution_clock::now();
 			cost += bce_cost.cost(Y, dataset.getTargets().at(batch));
-			auto costCalcTime = high_resolution_clock::now();
+			auto t3 = high_resolution_clock::now();
 
 			// store timing data
-			duration<double, std::milli> tmp = forwardTime - t0;
+			duration<double, std::milli> tmp = t1 - t0;
 			forwardTotalTimeMs += tmp;
 			
-			tmp = backwardTime - forwardTime;
+			tmp = t2 - t1;
 			backwardTotalTimeMs += tmp;
-
-			tmp = costCalcTime - backwardTime;
+			
+			tmp = t3 - t2;
 			costCalcTotalTimeMs += tmp;
 		}
 
@@ -75,6 +77,8 @@ int main() {
 			std::cout 	<< "Epoch: " << epoch
 						<< ", Cost: " << cost / dataset.getNumOfBatches()
 						<< std::endl;
+		
+
 		}
 	}
 
